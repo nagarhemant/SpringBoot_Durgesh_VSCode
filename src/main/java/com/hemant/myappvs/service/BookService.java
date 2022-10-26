@@ -2,6 +2,8 @@ package com.hemant.myappvs.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -37,5 +39,12 @@ public class BookService {
     public Book addBook(Book book){
         list.add(book);
         return book;
+    }
+
+    //delete book
+
+    public void deleteBook(int bid){
+
+       list = list.stream().filter(book->book.getId()!=bid).collect(Collectors.toList());
     }
 }
